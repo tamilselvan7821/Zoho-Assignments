@@ -4,8 +4,8 @@ Use synchronization to avoid race conditions and display the final value.
 */
 public class AvoidRaceCondition{
     static int count=0; 
-    public static void increaseCount(){
-            count++;
+    public static synchronized void increaseCount(){
+        count++; 
     }
     public static void main(String[] args) throws InterruptedException{
         MyThread task1=new MyThread();
@@ -26,22 +26,19 @@ public class AvoidRaceCondition{
 }
 class MyThread extends Thread{
     @Override
-    public void run(){System.out.println(
-        Thread.currentThread().getName());
+    public void run(){
         for(int i=1;i<=1000;i++)AvoidRaceCondition.increaseCount();
     }
 }
 class SecondMyThread extends Thread{
     @Override
-    public void run(){System.out.println(
-        Thread.currentThread().getName());
+    public void run(){
         for(int i=1;i<=1000;i++)AvoidRaceCondition.increaseCount();
     }
 }
 class ThirdMyThread extends Thread{
     @Override
-    public void run(){System.out.println(
-        Thread.currentThread().getName());
+    public void run(){
         for(int i=1;i<=1000;i++)AvoidRaceCondition.increaseCount();
     }
 }
