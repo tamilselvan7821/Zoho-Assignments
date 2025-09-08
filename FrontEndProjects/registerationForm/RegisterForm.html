@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration</title>
+        <link rel="icon" href="images/logo2.png" type="image/png">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="css/register.css">
+        <script src="js/registerJs.js"></script>
+    </head>
+    <body>
+        <div class="header">
+                <div>
+                    <img style="height:130px;width:180px;" src="images/logo.png">
+                </div>
+                <div><a href="#personal">Personal Details</a></div>
+                <div><a href="#other">Other Details</a></div>
+                <div><a href="#bot">About Us</a></div>
+                <div><a href="#features">Features</a></div>
+        </div>
+        <div class="container">
+            <div class="inside">
+                <h1 id="personal" style="scroll-margin:100px;color:rgb(224, 16, 16);text-align: center;">Registration Form</h1>
+                <h2>Personal Details </h2>
+                <form onsubmit="return checkAllDetails()" action="success.html">
+                    <table>
+                        <tr>
+                            <td><label for="fname">First Name <b style="color:red;">*</b></label></td><td><input type="text" id="fname" name="fname" oninput="nameCheck()" autocomplete="off"/></td><td></td><td><label for="lname">Last Name <b style="color:red;">*</b></label></td><td><input type="text" id="lname" name="lname" autocomplete="off" oninput="nameCheck()" required/></td><td><p id="ou"></p></td>
+                        </tr>
+                        <tr>
+                            <td><label >Gender</label></td><td><label><input type="radio" value="male" name="gen"/>Male</label><label><input type="radio" name="gen"/>Female</label><label><input type="radio" name="gen"/>Other</label></td>
+                        </tr>
+                        <tr>
+                            <td><label for="phNo">Ph.No <b style="color:red;">*</b></label></td><td><input type="text" name="ph" autocomplete="off" oninput="phCheck()" id="phNo"required/></td><td><p id="phId"></p></td>
+                        </tr>
+                        <tr>
+                            <td><label for="eMail">Mail-Id <b style="color:red;">*</b></label></td><td><input name="setmail" type="text" autocomplete="off" id="eMail" oninput="mailCheck()" required></td><td><p id="mailId"></p></td>
+                        </tr>
+                        <tr>
+                            <td><label for="dob">D-O-B</label></td><td><input name="DOB" type="date" id="dob" ></td>
+                        </tr>
+                        <tr>
+                            <td><label for="address">Current Address </label></td><td><input name="cuAddress" type="text" autocomplete="off" id="address" ></td><td></td><td><label for="address2">Permanent Address </label></td><td><input type="text" name="peAddress" autocomplete="off" id="address2" ></td>
+                        </tr>
+                        <tr>
+                            <td><label for="city">City <b style="color:red;">*</b></label></td><td><input name="city" type="text" id="city" autocomplete="off" oninput="cityCheck()" required></td><td><p id="outCity"></p></td>
+                        </tr>
+                        <tr>
+                            <td><label for="pincode">Pincode <b style="color:red;">*</b></label></td><td><input name="pincode" type="text" autocomplete="off" id="pincode" oninput="pinCheck()" required></td><td><p id="outPin"></p></td>
+                        </tr>
+                        <tr>
+                            <td><label for="district">District <b style="color:red;">*</b></label></td><td><select id="district" name="district" required><option disabled selected value="">---Select District----</option><option>Tenkasi</option><option>Tirunelveli</option><option>Chennai</option><option>Vellore</option><option>Madurai</option><option>Pudukkottai</option><option>Coimbatore</option><option>Thanjavur</option><option>Theni</option><option>Virudhunagar</option></select></td>
+                        </tr>
+                        <tr>
+                            <td><label for="state">State <b style="color:red;">*</b></label></td><td class="dat"><input name="state" type=text placeholder="         ---Select State---" list="states" id="state" name="state" required><datalist id="states"><option value="Tamil nadu"></option><option value="Kerala"></option><option value="Andra Pradesh"></option><option value="Bihar"></option><option value="Goa"></option><option value="Gujarat"></option><option value="Karnataka"></option></datalist></td>
+                        </tr>
+                    </table>
+                
+                <div class="commonDetails">
+                    <h2  id="other" style="scroll-margin:100px;">Other Details</h2>
+                    <table>
+                        <tr>
+                            <td><label for="nearOffice">Near by ZSGS office</label></td><td><select name="nearOffice" id="nearOffice" ><option value="" disabled selected>---Select----</option><option>Surandai</option><option>Tenkasi</option><option>Tharuvai</option><option>Peravurani</option><option>Vellore</option><option>Chennai</option></select></td>
+                        </tr>
+                        <tr>
+                            <td><label for="education">Education Qualification <b style="color:red;">*</b></label></td><td><select name="education" id="education" required><option value="" disabled selected>---Select----</option><option>B.E.</option><option>B.A.</option><option>B.Sc.</option><option>B.Com.</option><option>BBA</option><option>BCA</option><option>MBBS</option><option>B.Pharm</option><option>B.Ed.</option><option>LLB</option><option>Other</option></select></td>
+                        </tr>
+                        <tr>
+                            <td><label for="language">Languages Known</label></td><td><input id="skill" name="language" type="checkbox" value="C">C<input id="skill" type="checkbox" name="language" value="C++">C++<input id="skill" type="checkbox" name="language" value="Java">JAVA<input id="skill" type="checkbox" name="language" value="Python" >PYTHON</td>
+                        </tr>
+                        <tr>
+                            <td><label for="resume">Upload Resume </label></td><td><input name="resume" type="file" oninput="checkResume(this)" id="resume"></td><td><p id="errorResume" style="color:red"></p></td>
+                        </tr>
+                        <tr>
+                            <td><label for="photo">Upload Your Photo</label></td><td><input name="photo" type="file" oninput="checkPhoto(this)" id="photo"></td><td><p id="errorPhoto" style="color:red"></p></td>
+                        </tr>
+                    </table>
+                    <div class="exp">
+                        <p>Work Experience </p>
+                        <div class="setTables">
+                            <table class="workExperience" id="setData" border="1">
+                                <tr>
+                                    <td>Company Name</td><td>Years Of Experience</td><td>Field</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="details">
+                            <label>Company Name <input type="text" oninput="checkCompanyName()" id="companyName" autocomplete="off" ></label>
+                            <label>Year of Experience <input type="text" oninput="checkCompanyExp()" id="companyExp" autocomplete="off" ></label>
+                            <label>Field <input type="text" id="companyField" oninput="checkCompanyField()" autocomplete="off" ></label>
+                            <label><input type="button" onclick="addDetails()" value="Add"></label>
+                            <label><input type="button" onclick="cancelWork()" value="Cancel"></label>
+                        </div>
+                        <input type="button" value="+ Add" onclick="callAdd()" id="addWork">
+                    </div>
+                </div>
+                <div class="end">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Clear" onclick="clearAllTd()">
+                </div>
+                <p style="text-align: center;color:red;" id="errorOut"></p>
+            </form>
+            </div>
+        </div>
+        <div class="footer" id="bot" style="scroll-margin:100px;">
+            <div class="footerTop">
+                <div class="features" id="features" style="scroll-margin:100px;">
+                    <div>
+                       <a id="creatorA" href="https://www.zoho.com/en-in/creator/"><img src="creator.png" id="creatorId"></a>
+                    </div>
+                    <div>
+                        <a id="mailA" href="https://www.zoho.com/mail/?src=zindex&sec=fa"><img src="mail.png" id="maiId"></a>
+                    </div>
+                    <div>
+                        <a id="bookA" href="https://www.zoho.com/in/books/?src=zindex&sec=fa"><img src="book.png" id="bookId"></a>
+                    </div>
+                    <div>
+                        <a id="camA" href="https://www.zoho.com/campaigns/"><img src="campaign.png" id="camId"></a>
+                    </div>
+                    <div>
+                        <a id="crmA" href="https://www.zoho.com/en-in/crm/?src=zindex&sec=fa"><img src="crm.png" id="crmId"></a>
+                    </div>
+                    <div>
+                        <a id="deskA" href="https://www.zoho.com/en-in/desk/"><img src="desk.png" id="deskId"></a>
+                    </div>
+                </div>
+                <div class="community">
+                    <table>
+                        <th>Apps and Extension</th><th>Learn</th><th>Community</th><th>Company</th><th>Contact Sales</th>
+                        <tr>
+                            <td><a href="https://www.zoho.com/mobile-apps.html?src=ft">Mobile Apps</a></td><td><a href="https://www.zoho.com/spark/?src=ft">Training and Certification</a></td><td><a href="https://community.zoho.com/?src=ft">User Community</a></td><td><a href="https://www.zoho.com/aboutus.html?src=ft">About us</a></td><td>Phone <a href="">1800 103 1123</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.zoho.com/desktop-apps.html?src=ft">Desktop Apps</a></td><td><a href="https://www.zoho.com/academy/?src=ft">Academy</a></td><td><a href="https://www.zoho.com/customers.html?src=ft">Customer Stories</a></td><td><a href="https://www.zoho.com/ourstory.html?src=ft">Our Story</a></td><td>Phone <a href="">1800 572 3535</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.zoho.com/developer/?src=ft">Developer Center</a></td><td><a href="https://www.zoho.com/blog/?src=ft">Blog</a></td><td><a href="https://www.zoho.com/partners/work-with-partner.html?src=ft">Work with a Partner</a></td><td><a href="https://www.zoho.com/press.html?src=ft">Press</a></td><td>Email <a href="">sales@zohocorp.com</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/accounts/login/?next=%2Fzoho_community%2F&source=omni_redirect"><img style="height:30px;width:30px;" src="images/insta.png"></a>
+                    <a href="https://www.facebook.com/ZohoCommunity/"><img style="height:30px;width:30px;" src="images/face.png"></a>
+                    <a href="https://www.youtube.com/user/zoho"><img style="height:30px;width:30px;" src="images/youtube.png"></a>
+                    <a href="https://x.com/ZohoCommunity"><img style="height:30px;width:30px;" src="images/x.png"></a>
+                </div>
+                <div class="bar">
+                    <label><a href="https://www.zoho.com/">Zoho Home</a></label>|<label><a href="https://www.zoho.com/contactus.html">Contact Us</a></label>|<label><a href="https://www.zoho.com/security.html">Security</a></label>|<label><a href="https://www.zoho.com/compliance.html">Compliance</a></label>|<label><a href="https://www.zoho.com/policy.html">Anti-Spam-Policy</a></label>|<label><a href="https://www.zoho.com/en-in/terms.html">Term of Service</a></label>|<label><a href="https://www.zoho.com/privacy.html">Privacy Policy</a></label>|<label><a href="https://www.zoho.com/abuse-policy/">Abuse Policy</a></label>|<label><a href="https://www.zoho.com/privacy/cookie-policy.html">Cookie Policy</a></label>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <img src="images/foot.png">
+                <p>@ 2025, Zoho Corporation Pvt.Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </body>
+</html>

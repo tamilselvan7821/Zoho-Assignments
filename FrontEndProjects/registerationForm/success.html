@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ZSGS</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="icon" href="images/logo2.png" type="image/png">
+        <style>
+            body,html{margin:0;}
+            body{background-image:url('images/sucessBackground.png');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;padding:5px;}
+            .sucess{display: flex;align-items: center;flex-direction: column;margin:10px;}
+            .sucess h1{margin:10px;color:rgb(0, 119, 255)}
+            .sucess input{margin:10px;height:30px;font-size: 15px;padding:5px;border-radius: 20px;cursor: pointer;background-color: transparent;}
+            .sucess input:hover{background-color: aliceblue;color:red}
+            .out1{display:none;border:4px inset rgb(241, 147, 30);width:max-content;height:auto;margin:30px auto;font-size:medium;padding:60px;}
+            .first table,td{margin:10px;padding:5px;}
+            .first td:nth-child(1){color:rgb(206, 38, 225);}
+            .first td:nth-child(2){color:rgb(27, 8, 15);}
+            #getTable{margin-left:15px;display:none;}
+            #outTable{margin:15px;}
+            #getTable table tr:first-child{color:red;font-weight:bold;}
+            #getTable table tr:nth-child(n){color:blue;}
+        </style>
+        
+    </head>
+    <body>
+        <div class="sucess">
+            <h1>Sucessfully registered your application</h1>
+            <a href="RegisterForm.html"><input type="button" value='&#60 Go Back'></a>
+            <input type="button" value=' preview your application &#62' id="preButton" onclick="show()">
+        </div>
+        <div class="out1">
+            <div class="first">
+            <table cellspacing="7" cellpadding="5">
+                <tr>
+                    <td>Name </td><td><p id="paramName"></p></td>
+                </tr>
+                <tr>
+                    <td>Gender  </td><td><p id="paramGender"></p></td>
+                </tr>
+                <tr>
+                    <td>Ph.No  </td><td><p id="paramPh"></p></td>
+                </tr>
+                <tr>
+                    <td>Mail-Id  </td><td><p id="paramMail"></p></td>
+                </tr>
+                <tr>
+                    <td>D.O.B  </td><td><p id="paramDob"></p></td>
+                </tr>
+                <tr>
+                    <td>current Address </td><td><p id="paramCu"></p></td>
+                </tr>
+                <tr>
+                    <td>Permanent Address </td><td><p id="paramPer"></p></td>
+                </tr>
+                <tr>
+                    <td>City  </td><td><p id="paramCity"></p></td>
+                </tr>
+                <tr>
+                    <td>Pincode  </td><td><p id="paramPin"></p></td>
+                </tr>
+                <tr>
+                    <td>District  </td><td><p id="paramDis"></p></td>
+                </tr>
+                <tr>
+                    <td>State  </td><td><p id="paramState"></p></td>
+                </tr>
+                <tr>
+                    <td>Near by Zsgs Office  </td><td><p id="paramOffice"></p></td>
+                </tr>
+                <tr>
+                    <td>Education Qualification </td><td><p id="paramEducation"></p></td>
+                </tr>
+                <tr>
+                    <td>Lankuages Known </td><td><p id="paramLang"></p></td>
+                </tr>
+                <tr>
+                    <td>Resume </td><td><p id="paramResume"></p></td>
+                </tr>
+                <tr>
+                    <td>Photo </td><td><p id="paramPhoto"></p></td>
+                </tr>
+            </table></div>
+            <div id="getTable">
+                <p style="color:rgb(206, 38, 225);margin:0;padding-left:10px;">Experience</p>
+                <table id="outTable">
+                </table>
+            </div>
+        </div>
+    </body>
+    <script>
+        function show(){
+
+            document.getElementById("preButton").style.display="none";
+            let query=window.location.search;
+            document.querySelector(".out1").style.display="flex";
+            document.querySelector(".out1").style.flexDirection="column";
+            let param=new URLSearchParams(query);
+            let gender=param.get("gen");
+            let dob=param.get("DOB");
+            let cuAdd=param.get("cuAddress");
+            let peAdd=param.get("peAddress");
+            let near=param.get("nearOffice");
+            let lan=param.getAll("language");
+            let res=param.get("resume");
+            let ph=param.get("photo");
+
+            document.getElementById("paramName").innerText=param.get("fname")+" "+param.get("lname"); 
+            if(gender!==""&&gender!==null)document.getElementById("paramGender").innerText=gender;
+            else document.getElementById("paramGender").innerText="-";
+            document.getElementById("paramPh").innerText=param.get("ph");
+            document.getElementById("paramMail").innerText=param.get("setmail");
+            if(dob!==""&&dob!==null)document.getElementById("paramDob").innerText=dob;
+            else document.getElementById("paramDob").innerText="-";
+            if(cuAdd!==""&&cuAdd!==null)document.getElementById("paramCu").innerText=cuAdd;
+            else document.getElementById("paramCu").innerText="-";
+            if(peAdd!==""&&peAdd!==null)document.getElementById("paramPer").innerText=peAdd;
+            else document.getElementById("paramPer").innerText="-";
+            document.getElementById("paramCity").innerText=param.get("city");
+            document.getElementById("paramPin").innerText=param.get("pincode");
+            document.getElementById("paramDis").innerText=param.get("district");
+            document.getElementById("paramState").innerText=param.get("state");
+            if(near!==""&&near!==null)document.getElementById("paramOffice").innerText=near;
+            else document.getElementById("paramOffice").innerText="-";
+            document.getElementById("paramEducation").innerText=param.get("education");
+            if(lan!==""&&lan!==null)document.getElementById("paramLang").innerText=lan.join(", ");
+            else document.getElementById("paramLang").innerText="-";
+            if(res!==""&&res!==null)document.getElementById("paramResume").innerText=res;
+            else document.getElementById("paramResume").innerText="-";87873
+            if(ph!==""&&ph!==null)document.getElementById("paramPhoto").innerText=ph;
+            else document.getElementById("paramPhoto").innerText="-";
+
+            let valuse=sessionStorage.getItem("tableData");
+            if(valuse!==""&&valuse!==null){
+                document.getElementById("outTable").innerHTML=valuse;
+                document.querySelector("#getTable").style.display="flex";
+                document.querySelector("#getTable").style.flexDirection="column";
+            }
+        }
+    </script>
+</html>
