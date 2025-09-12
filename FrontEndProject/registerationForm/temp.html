@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Center Out Border Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+      background: #f9f9f9;
+    }
+
+    a {
+      position: relative;
+      text-decoration: none;
+      color: #333;
+      font-size: 20px;
+      margin: 0 20px;
+      padding-bottom: 4px;
+    }
+
+    /* underline effect */
+    a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background: #007bff;
+      transform: scaleX(0);
+      transform-origin: center;   /* expand from center */
+      transition: transform 0.4s ease;
+    }
+
+    a:hover::after {
+      transform: scaleX(1); /* expands fully */
+    }
+  </style>
+</head>
+<body>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Contact</a>
+</body>
+</html>

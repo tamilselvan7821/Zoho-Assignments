@@ -97,7 +97,7 @@ function checkAllDetails(){
         return true;
     }
     else{
-        document.getElementById("errorOut").innerText="please enter the correct inputs";
+        document.getElementById("errorOut").innerText="please check the all inputs";
         return false;
     }
 }
